@@ -14,5 +14,7 @@ node {
 } }        stage ('Deployments_test'){ steps { sh "cp **/target/*.war C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5_Tomcat84\\webapps\\ROOT"
 	 } } stage ('Deployments_Prod'){ steps { 
            timeout(time :3, unit :'DAYS'){ input message :'Approve PRODUCTION Deployment?' }
-	   sh "cp **/target/*.war C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5_Tomcat84\\webapps\\ROOT" } } } 
+	   sh "cp **/target/*.war C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5_Tomcat84\\webapps\\ROOT" } }
+	stage('Build Docker image'){ steps{ sh 'pwd' sh 'docker build -t hello .' } } 
+} 
 
