@@ -11,8 +11,8 @@ node {
 	      bat "${mvnHome}/bin/mvn package"
 	   }post { success { echo 'Now Archiving...' archiveArtifacts artifacts : '**/target/*.war'
 }
-} }        stage ('Deployments_test'){ steps { sh "cp **/target/*.war C:\\Program Files (x86)\\Jenkins\\workspace\\HelloWorld"
+} }        stage ('Deployments_test'){ steps { sh "cp **/target/*.war C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5_Tomcat84\\webapps\\ROOT"
 	 } } stage ('Deployments_Prod'){ steps { 
            timeout(time :3, unit :'DAYS'){ input message :'Approve PRODUCTION Deployment?' }
-	   sh "cp **/target/*.war C:\\Program Files (x86)\\Jenkins\\workspace\\HelloWorld" } } } 
+	   sh "cp **/target/*.war C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5_Tomcat84\\webapps\\ROOT" } } } 
 
